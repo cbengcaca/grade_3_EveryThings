@@ -116,8 +116,8 @@ int main() {
 	cout << "Input the weight you want: " ;
 	cin >> wantWeight;
 
-	int maxValue;
-	int maxIndex;
+	int maxValue = -1;
+	int maxIndex = -1;
 	for (int i=0; i< totalUnion; i++){
         if (weightsRecord->at(i) == wantWeight){
             if (valuesRecord->at(i) > maxValue){
