@@ -1,0 +1,6 @@
+﻿  cheepestLOcation.cpp
+C:\Users\15054\Documents\GitHub\grade-3\cheepestHosterLocation\cheepestLOcation\cheepestLOcation.cpp(16,23): warning C4305: “初始化”: 从“double”到“float”截断
+C:\Users\15054\Documents\GitHub\grade-3\cheepestHosterLocation\cheepestLOcation\cheepestLOcation.cpp(60,23): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\15054\Documents\GitHub\grade-3\cheepestHosterLocation\cheepestLOcation\cheepestLOcation.cpp(65,23): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\15054\Documents\GitHub\grade-3\cheepestHosterLocation\cheepestLOcation\cheepestLOcation.cpp(163,27): warning C4018: “<”: 有符号/无符号不匹配
+  cheepestLOcation.vcxproj -> C:\Users\15054\Documents\GitHub\grade-3\cheepestHosterLocation\cheepestLOcation\Debug\cheepestLOcation.exe
