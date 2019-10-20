@@ -1,0 +1,4 @@
+in a= 123;
+in b= 456;
+if (a==123){pr("a is 123");}else{pr("b is 456")}
+pr("program over")
