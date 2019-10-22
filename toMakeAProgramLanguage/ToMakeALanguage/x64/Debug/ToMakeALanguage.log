@@ -1,4 +1,4 @@
 ﻿  ToMakeALanguage.cpp
-C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(190,43): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(198,44): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(199,43): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(207,44): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
   ToMakeALanguage.vcxproj -> C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\x64\Debug\ToMakeALanguage.exe

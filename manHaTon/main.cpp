@@ -29,8 +29,7 @@ int main()
         for (int j=0; j<nums; j++){
             record[i][j] = 0;
             /*record记录的是某一点完成最短路径的
-            上一跳是向上或者向左
-            */
+            上一跳是向上或者向左*/
         }
     }
 

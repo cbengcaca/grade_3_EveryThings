@@ -113,9 +113,6 @@ void readInAllMessages() {
 	} while (true);
 
 	do {
-		if ((int)vectorReadChar.size() == 28) {
-			cout << 28;
-		}
 		string singleLine;
 		getline(readStatus, singleLine);
 		if (singleLine.empty()) { //读取到空行，跳出循环
@@ -171,19 +168,31 @@ void readInWholeCodes() {
 	stringstream buffer;
 	buffer << code.rdbuf();
 	wholeCodes = buffer.str();
+	
+	//为代码尾部人为增加一个换行符
+	//用于利用尾部的超前搜索
+	//强行将代码尾的并不会进入识别动作的非关键字字符串识别
+	wholeCodes.append("\n");
 }
 void begin() {
 	int cursor = 0;
 	while (true)
 	{
-		if (vectorStatusType[statusNow] == runningFlag) {//如果当前状态为运行状态，则进行读取操作
+		if (cursor >= wholeCodes.size()) {
+			break;
+		}
+		if (vectorStatusType[statusNow] == runningFlag) {//当前状态为运行状态，继续运行
 			reading = wholeCodes.at(cursor);
-			if (wholeCodes.at(cursor) == ' '||wholeCodes.at(cursor) == '\n') {//空白跳过
-				cursor++;
-				continue;
+			//分析串中为空，则此字符可以废弃
+			if (reading == " " || reading == "\n") {
+				if (analysis == "") {
+					cursor++;
+					continue;
+				}
 			}
-			
-			//不是空白
+			//否则分析串不为空，则利用此字符使当前状态强行跳转
+
+			//根据当前输入与当前状态，确定下一跳转位置
 			int searchStartIndex = vectorBase[statusNow]; //当前状态跳转搜索起始位置
 			int searchEndIndex;
 			if (statusNow + 1 == vectorBase.size()) {//当前状态为列表中最后一个状态，无法从下一个状态获取当前状态的搜索地址end值
@@ -202,26 +211,46 @@ void begin() {
 				}
 			}
 
-			//根据当前输入与当前状态，确定跳转位置
-			string nowWaiting;//用于待匹配的串
+			string nowWaiting;//当前从缓冲区内读入的字符
 			nowWaiting.push_back(wholeCodes.at(cursor));
 			int nextStatus = -1;
 			for (size_t i = searchStartIndex; i <=searchEndIndex; i++)
 			{
+				//从初始化的符号转移表中读出符号并装进匹配串
 				string pattern = "[";
-				pattern	+= vectorReadChar[i]; //匹配模式
+				pattern	+= vectorReadChar[i]; 
 				pattern += "]";
-				regex r(pattern); //装载匹配工具
-				if (regex_match(nowWaiting,r)) //如果匹配成功，说明下一个状态在当前行
+				regex r(pattern); 
+				//匹配成功，说明找到状态转移
+				if (regex_match(nowWaiting,r)) 
 				{
-					nextStatus = vectorNext.at(i); //找到下一个状态
-					statusNow = nextStatus;//将当前状态改为下一状态
+					//匹配成功意味着3种情况
+					//1.匹配到了关键字，并未进行超前搜索
+					//	当前状态因阅读情况将转入关键字识别动作
+					//	当前阅读情况将被读入分析串
+					//2.匹配到了当前状态的一个other转移符号
+					//	意味着当前阅读的结果不会加入到分析串中
+					//	因为当前状态不会因为当前阅读而进行转移
+					//	所以当前分析串会进行识别动作，当前阅读状态会被丢弃
+					//	进行了超前搜索，指针将回退
+					//3.匹配到了一个非终结状态的中间状态
+					//	意味着下一状态仍然是识别状态，不会进行任何的识别动作
+					//	当前阅读情况将读入分析串
+
+					//找到转移状态
+					nextStatus = vectorNext.at(i); 
+					//修改当前状态
+					statusNow = nextStatus;
 					
-					//注意，以下i==searchEndIndex读入other的情况是带超前搜索的
+					//认为当前搜索位置已经到了给定范围的最后一位
+					//意味着是读入了当前状态的一个other
+					//也就意味着进行了超前搜索并且进入了终结状态
 					if (i == searchEndIndex){
+						//指针回退，当前读入缓冲区清空
 						cursor--;
 						reading = "";
-					}//以下情况不带超前搜索
+					}
+					//没有进入终结状态
 					else {
 						analysis += reading;
 					}	
@@ -230,21 +259,19 @@ void begin() {
 			}
 			cursor++;
 		}
-		else //当前并非是运行状态而是终结状态 ，则去判断是进入了哪一个终结状态
+		//当前并非是运行状态而是终结状态 ，则去判断是进入了哪一个终结状态
+		else 
 		{
+
 			charge(statusNow);
 		}
-		if (cursor >= wholeCodes.size()) {//运行到代码段末尾，进行跳出，此时所有识别的串及串类别已经保存好
-			break;
-		}
 	}
-		
-
 }
 
 void showAllWords() {
+	cout << "DA语言词法分析器运行完毕：" << endl;
 	for (int i = 0; i < wordComplete.size(); i++) {
-		cout << i << " " << wordComplete.at(i) << "|" << wordType.at(i);
+		cout << i << " " << wordComplete[i] << "|" << wordType[i] << endl;
 	}
 }
 int main()
@@ -252,7 +279,7 @@ int main()
 	readInAllMessages();
 	readInWholeCodes();
 	begin();
-	
+	showAllWords();
 }
 
 
