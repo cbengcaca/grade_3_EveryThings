@@ -1,4 +1,18 @@
 ﻿  ToMakeALanguage.cpp
-C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(199,43): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(207,44): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(204,43): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(212,44): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(252,23): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(591,36): warning C4267: “参数”: 从“size_t”转换到“const _Ty”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(591,36): warning C4267:         with
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(591,36): warning C4267:         [
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(591,36): warning C4267:             _Ty=int
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(591,36): warning C4267:         ]
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(647,28): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(653,42): warning C4805: “==”: 在操作中将类型“int”与类型“bool”混合不安全
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(685,41): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(732,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(795,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(829,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(1006,42): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\ToMakeALanguage.cpp(1080,9): warning C4101: “nextStatus”: 未引用的局部变量
   ToMakeALanguage.vcxproj -> C:\Users\15054\Documents\GitHub\grade-3\toMakeAProgramLanguage\ToMakeALanguage\x64\Debug\ToMakeALanguage.exe

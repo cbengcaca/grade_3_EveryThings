@@ -1,4 +1,4 @@
 in a= 123;
 in b= 456;
-if (a==123){pr("a is 123");}el{pr("b is 456")}
-pr("program over");abcc
+if (a==123){pr("a is digit");}
+pr("gram over");

@@ -1,0 +1,57 @@
+R'	->	R						
+R	->	Z						
+Z	->	H	P					
+Z	->	I	P					
+Z	->	Q	P					
+Z	->	N	P					
+P	->	H	P					
+P	->	I	P					
+P	->	Q	P					
+P	->	N	P
+I	->	32	5	J	6	3	S	4									
+S	->	H	X					
+S	->	Q	X			
+X	->	H	X					
+X	->	Q	X									
+H	->	K	9	L	15			
+H	->	K	E	A	15			
+H	->	K	D	15				
+H	->	K	9	40	5	6	15	
+B	->	7	T	7				
+T	->	C	Y				
+Y	->	C	Y	
+J	->	C	F	A				
+J	->	C	G	A				
+J	->	C	G	B				
+N	->	O	C	9	A	15		
+N	->	O	C	15				
+L	->	C	M	C	15			
+L	->	C	M	A	15			
+L	->	A	M	A	15			
+Q	->	39	5	B	6	15		
+K	->	C	
+A	->	42
+C	->	41
+D	->	20
+D	->	21
+D	->	22
+M	->	8
+M	->	19
+M	->	10
+M	->	11
+M	->	12
+M	->	13
+M	->	31
+E	->	23
+E	->	24
+E	->	25
+E	->	26
+F	->	17
+F	->	18
+F	->	27
+F	->	28
+G	->	29
+G	->	30
+O	->	36
+O	->	37
+O	->	38							
