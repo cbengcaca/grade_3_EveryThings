@@ -12,31 +12,192 @@
 #include <string>
 using namespace std;
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>词法分析器
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<词法分析变量|方法声明
 int runningFlag = -1;//正在读取标识
 int keyWordReadFlag = -1;//关键字识别标识
 int stringReadFlag = -1;//字符串识别标识
 int numsReadFlag = -1;//数字识别标识
 int typeOfString = -1;//字符串类型码
 int typeOfNums = -1;//数字类型码
-
 vector<int> vectorBase;//标识本状态的开始搜索地址
 vector<int> vectorNext;//本状态读取某字符跳转的下一个状态
 vector<string> vectorReadChar;//跳转状态前读取的字符
 vector<int> vectorCheck;//保留跳转状态来自于哪一个当前状态
 vector<int> vectorStatusType;//状态是否跳转
-
 vector<string> wordComplete;//已经识别好的单词
 vector<int> wordType;//已经读好的单词的类别
-
 string analysis = "";//分析完成等待装载的字符串
 string reading = ""; //正在判别区当中的字符串
 int statusNow = 0;//当前状态机状态
-
 map<string, int> WORDTYPEREAD; //预定的字符类别及其编号
-
 string wholeCodes;
 
+vector<string> split(string str, string pattern);
+void readKeyWord();
+void readString();
+void readNum();
+void charge(int actionType);
+void readInAllMessages();
+void readString();
+void readNum();
+void charge(int actionType);
+void readInAllMessages();
+void readInWholeCodes();
+void showAllWords();
+void begin();
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<END 词法分析变量|方法声明
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<语法分析器变量|方法声明
+//语法分析器依赖变量
+
+//一级单元记录产生式
+//t:char 产生式左部
+//tRight:string 产生式右部
+//rangeEnd:int 二级列表的状态搜索最末位
+struct syntaxTopUnit
+{
+	string t;
+	vector<vector<string>> tRight;
+	int rangeEnd = -1;
+};
+//二级单元记录文法状态
+//itemStep:int 项目识别标记
+//tComeNum:int 标记此项目来自哪一个产生式
+//tCome:string 标记此项目来自于哪一个符号
+//waiting:vector<string>标记待识别的字符
+struct syntaxSecUnit
+{
+	int itemStep = -1;
+	int tComeNum = -1;
+	string tCome = "";
+	string waiting = "";
+	int tPNum = -1;
+};
+//项目集记录单元
+//closure:vector<int> 当前项目集包含的项目序号
+//go:map<string,int> 项目转移路由表
+struct closureAndNext
+{
+	vector<int> closureBase;//基本项目
+	string closureBaseFlag; //标识唯一的基本项目的串
+	vector<int> closureTotal;//生成状态集闭包后的所有项目
+	map<string, int> go;//读取任意字符要跳转到的其他项目集标号
+};
+//语法树记录单元
+struct treeUnit {
+	string thisUnit;
+	vector<treeUnit> subTrees;
+};
+//一级文法记录单元
+vector<syntaxTopUnit> tSearchRange;
+//二级文法状态搜索索引
+vector<syntaxSecUnit> tStatus;
+//项目集闭包与后继项目集
+vector<closureAndNext> closure;
+//搜索范围记录变量
+int range = -1;
+//终结符非终结符记号
+int TFlag = -1;
+int VFlag = -1;
+map<string, int> VAndT;
+//标记一个项目集位置,无限搜索或重复定义
+map<string, int> IAndGo;
+//FOLLOW集查询
+map<string, vector<string>> followMap;
+//FIRST集查询
+map<string, vector<string>> firstMap;
+//SLR1状态转移表
+vector<vector<int>> SLRtable;
+//字符随机搜索表
+map<string, int> VSearch;
+//产生式随机检索表
+map<string, int> PList;
+//标记需要手动解除递归的非终结符
+map<string, int> handByV;
+//标记需要从分析栈剔除的元素
+map<string, int> handByMap;
+//语法树根节点
+treeUnit treeRoot;
+//分析状态栈
+vector<int> statusStack;
+//分析字符栈
+vector<string> identifyStrings;
+//连续归约开关
+bool removeRecruSwitch;
+
+void readInAllSyntaxInfo();
+void recrusion(int numOfPreviousUnit);
+void createClosureGo();
+void createFirstAndFollow();
+void SLRactionTable();
+void showSLRActionTable();
+void beginSynTax();
+void printTree(int level, treeUnit treeBegin);
+void showSynTaxTree();
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<END 语法分析器变量|方法声明
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<语义分析器变量|方法声明
+//判断当前语句是否在if里
+//if中会出现下列两种语句
+//1、赋值语句
+//2、print语句
+bool ifFlag = false;
+bool canMakeTwo = false;
+//行号
+int linecode = 0;
+//临时变量号
+int tran_temp = 0;
+
+//语义栈所用语义单元超类
+class tran_stateUnit {
+public:
+	int classType = -1;
+	string val = "";
+	string left = "";
+	int tempNum = -1;
+	int getClassType() {
+		return classType;
+	}
+};
+//语义栈
+vector<tran_stateUnit> valUnitStack;
+//符号表单元
+struct tran_ChracUnit {
+	string name;
+	string type;
+	string value;
+};
+//符号表
+vector<tran_ChracUnit> tran_CharcTable;
+struct threeAddr {
+	int linecode = -1;//行号
+	int left = -1;//左部临时变量号
+	string addr1 = "";//操作数1
+	string op = "";//操作符
+	string addr2 = "";//操作数2
+	int lineGOTO = -1;//goto行号
+	bool addr1Flag = true;//addr1是否是临时变量
+	bool addr2Flag = true;//addr2是否是临时变量
+};
+vector<threeAddr> tran_threeAddr;
+
+void tran_addNewThreeAddr(int left, string addr1,bool addr1Flag, string op, string addr2,bool addr2Flag ,int lineGOTO);
+int tran_lookUp(string name);
+void tran_handleZero(string tran_char);
+void tran_handleOne(int tran_pType);
+void tran_handleTwo();
+void tran_handleThree();
+void tran_handleFour(int tran_pType, int tran_pNum);
+void tran_handleFive(int tran_pType, int tran_pNum);
+void tran_handleSix(int tran_pType, int tran_pNum);
+void tran_handleSeven();
+void tran_handleNine(int tran_pType, int tran_pNum);
+void tran_handleTen();
+void tran_charge(int tran_pType, int tran_pNum);
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<END 语义分析器变量|方法声明
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>词法分析器
 vector<string> split(string str, string pattern) {
 	vector<string> ret;
 	if (pattern.empty()) return ret;
@@ -330,93 +491,7 @@ void begin() {
 }
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>词法分析器
 
-
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>语法分析器
-//语法分析器依赖变量
-
-//一级单元记录产生式
-//t:char 产生式左部
-//tRight:string 产生式右部
-//rangeEnd:int 二级列表的状态搜索最末位
-struct syntaxTopUnit
-{
-	string t;
-	vector<vector<string>> tRight;
-	int rangeEnd = -1;
-};
-//二级单元记录文法状态
-//itemStep:int 项目识别标记
-//tComeNum:int 标记此项目来自哪一个产生式
-//tCome:string 标记此项目来自于哪一个符号
-//waiting:vector<string>标记待识别的字符
-struct syntaxSecUnit
-{
-	int itemStep = -1;
-	int tComeNum = -1;
-	string tCome = "";
-	string waiting = "";
-	int tPNum = -1;
-};
-
-//项目集记录单元
-//closure:vector<int> 当前项目集包含的项目序号
-//go:map<string,int> 项目转移路由表
-struct closureAndNext
-{
-	vector<int> closureBase;
-	string closureBaseFlag;
-
-	vector<int> closureTotal;
-	map<string, int> go;
-};
-
-//语法树记录单元
-struct treeUnit {
-	string thisUnit;
-	vector<treeUnit> subTrees;
-};
-
-//一级文法记录单元
-vector<syntaxTopUnit> tSearchRange;
-//二级文法状态搜索索引
-vector<syntaxSecUnit> tStatus;
-//项目集闭包与后继项目集
-vector<closureAndNext> closure;
-//搜索范围记录变量
-int range = -1;
-
-//终结符非终结符记号
-int TFlag = -1;
-int VFlag = -1;
-map<string, int> VAndT;
-
-//标记一个项目集位置,无限搜索或重复定义
-map<string, int> IAndGo;
-
-//FOLLOW集查询
-map<string, vector<string>> followMap;
-
-//FIRST集查询
-map<string, vector<string>> firstMap;
-
-//SLR1状态转移表
-vector<vector<int>> SLRtable;
-
-//字符随机搜索表
-map<string, int> VSearch;
-
-//产生式随机检索表
-map<string, int> PList;
-
-//标记需要手动解除递归的非终结符
-map<string, int> handByV;
-
-//标记需要从分析栈剔除的元素
-map<string, int> handByMap;
-
-//语法树根节点
-treeUnit treeRoot;
-
 //读取文法信息
 void readInAllSyntaxInfo() {
 	ifstream readHandBy("./hasRecrusionV.txt");
@@ -867,6 +942,7 @@ void showSLRActionTable() {
 	}
 }
 
+
 //开始进行语法分析
 void beginSynTax() {
 	//归约策略如下：
@@ -876,18 +952,12 @@ void beginSynTax() {
 	
 	int statusNow = 0;
 	bool isAviliable = false;
-	//分析状态栈
-	vector<int> statusStack;
-	//分析字符栈
-	vector<string> identifyStrings;
-	
-	
-	
+
 	statusStack.push_back(statusNow);
 
 	//对栈顶的非终结符进行判断
 	bool vChargeFlag = false;
-	bool removeRecruSwitch = false;
+	removeRecruSwitch = false;
 	for (int i = 0; i < wordComplete.size(); i)
 	{
 		//获取栈顶状态号
@@ -901,8 +971,7 @@ void beginSynTax() {
 			isAviliable = true;
 			break;
 		}
-		
-		
+
 		closureAndNext closureUnit = closure[statusNow];
 
 		//下方要处理的情况有以下3种
@@ -915,19 +984,37 @@ void beginSynTax() {
 		bool terminalFlag = false;
 
 		//标记一个终结状态的状态号
-		int tIndexFlag;
+		int tIndexFlag = 0;
 
 		//本次有可能需手动归约的左部符号
 		//获取当前状态式的左部信息
 		string handLeftT;
+		int handleftIndex = -1;
 		for (int i = 0; i < closureUnit.closureTotal.size();i++) {
 			if (handByV.find(tStatus[closureUnit.closureTotal[i]].tCome) != handByV.end()) {
 				handLeftT = tStatus[closureUnit.closureTotal[i]].tCome;
+				handleftIndex = tStatus[closureUnit.closureTotal[i]].tComeNum;
 				break;
 			}
 		}
 		bool handLeftFlag = handLeftT == ""? false:true;
 		
+
+		//判断这个单元是否含有一个终结状态
+		for (int i = 0; i < closureUnit.closureTotal.size(); i++) {
+			if (tStatus[closureUnit.closureTotal[i]].waiting.empty()) {
+				terminalFlag = true;
+				tIndexFlag = closureUnit.closureTotal[i];
+				break;
+			}
+		}
+
+		int itemNow = tIndexFlag;
+		//获取产生式类型号
+		int tComnNum = tStatus[itemNow].tComeNum;
+		//获取产生式编号
+		int tPNum = tStatus[itemNow].tPNum;
+		//当前含有一个终结状态
 
 		//当归约开关打开，则归约直到栈内仅存一个C与一个T时
 		while (removeRecruSwitch && !vChargeFlag)
@@ -935,7 +1022,7 @@ void beginSynTax() {
 			string top = identifyStrings.back();
 			string top3;
 			top3 = identifyStrings.size() >= 3?identifyStrings[identifyStrings.size() - 3] :"";
-			//查看末尾3号元素是否是某递归式的启动状态
+			//查看末尾3号元素是否是某递归式的可递归元素
 			if (handByMap.find(top3) != handByMap.end()) {
 				treeUnit newUnit;
 				newUnit.thisUnit = top;
@@ -953,28 +1040,18 @@ void beginSynTax() {
 				identifyStrings.pop_back();
 				identifyStrings.pop_back();
 				identifyStrings.push_back(top);
+				
+				tran_charge(handleftIndex, 0);
 			}
 			else {
 				removeRecruSwitch = false;
+				//告诉语义分析器下一次可以归约两个
+				canMakeTwo = true;
 			}
 		}
 
-		//判断这个单元是否含有一个终结状态
-		for (int i = 0; i < closureUnit.closureTotal.size(); i++) {
-			if (tStatus[closureUnit.closureTotal[i]].waiting.empty()) {
-				terminalFlag = true;
-				tIndexFlag = closureUnit.closureTotal[i];
-				break;
-			}
-		}
-
-		//当前含有一个终结状态
 		//去判断下一个读入的字符是否属于Follow集
 		if (terminalFlag && vChargeFlag == false) {
-
-			int itemNow = tIndexFlag;
-			int tComnNum = tStatus[itemNow].tComeNum;
-			int tPNum = tStatus[itemNow].tPNum;
 			vector<string> tTotalP = tSearchRange[tComnNum].tRight[tPNum];
 			string totalPString = "";
 
@@ -1030,6 +1107,12 @@ void beginSynTax() {
 				newUnit.thisUnit = left;
 				newUnit.subTrees = vectorTree;
 				parallelsNodes.push_back(newUnit);
+
+				if (valUnitStack.size() >3 && (valUnitStack[valUnitStack.size() - 2].left[0]== 'C' || valUnitStack[valUnitStack.size() - 2].left[0] == 'Q')) {
+					canMakeTwo == true;
+				}
+
+				tran_charge(tComnNum, tPNum);
 			}
 
 			//进行移进
@@ -1092,7 +1175,18 @@ void beginSynTax() {
 						statusStack.pop_back();
 						identifyStrings.push_back(handLeftT);
 						vChargeFlag = true;
-						removeRecruSwitch = true;
+						
+						//令连续归约开关在归约之后打开
+						//1、利于判断从顶部归约一个还是两个
+						
+						tran_charge(handleftIndex, 0);
+
+						//判断是否是可以启动连续归约的条件
+						if (identifyStrings.size() >3 && (identifyStrings[identifyStrings.size()-2] == identifyStrings[identifyStrings.size()-3])) {
+							removeRecruSwitch = true;
+							
+						}
+						
 					}
 					else {
 						cout << "<<< WARNING：非法字符 " << cursorType << " >>>" << endl;
@@ -1112,6 +1206,10 @@ void beginSynTax() {
 					statusStack.push_back(nextStatus);
 					identifyStrings.push_back(to_string(cursorType));
 					i++;
+					
+					//遇见终结符生成临时语义单元
+					//Zero号处理
+					tran_handleZero(cursorString);
 				}
 
 			}
@@ -1144,19 +1242,524 @@ void printTree(int level ,treeUnit treeBegin) {
 
 //打印语法树
 void showSynTaxTree() {
-	treeUnit treeBegin = treeRoot.subTrees[0];
-	cout << "<<< LEVEL:-1| R' -> R >>>" << endl;
-	for (int i = 0; i < treeBegin.subTrees.size(); i++)
-	{
-		cout << "<<< LEVEL: 0| " << treeBegin.thisUnit << " -> " << treeBegin.subTrees[i].thisUnit << " >>>" << endl;
-		
+	for (int i = 0; i < treeRoot.subTrees.size(); i++) {
+		treeUnit treeBegin = treeRoot.subTrees[i];
+		cout << "<<< LEVEL:-1| R' -> R >>>" << endl;
+		for (int i = 0; i < treeBegin.subTrees.size(); i++)
+		{
+			cout << "<<< LEVEL: 0| " << treeBegin.thisUnit << " -> " << treeBegin.subTrees[i].thisUnit << " >>>" << endl;
+
+		}
+		for (int i = 0; i < treeBegin.subTrees.size(); i++)
+		{
+			printTree(1, treeBegin.subTrees[i]);
+		}
 	}
-	for (int i = 0; i < treeBegin.subTrees.size(); i++)
+	
+}
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>语义分析器
+void tran_addNewThreeAddr(int left, string addr1, bool addr1Flag ,string op, string addr2,bool addr2Flag, int lineGOTO) {
+	threeAddr threeA;
+	threeA.left = left;
+	threeA.linecode = linecode;
+	linecode++;
+	threeA.addr1 = addr1;
+	threeA.op = op;
+	threeA.addr2 = addr2;
+	threeA.lineGOTO = lineGOTO;
+	threeA.addr1Flag = addr1Flag;
+	threeA.addr2Flag = addr2Flag;
+	tran_threeAddr.push_back(threeA);
+}
+
+
+void tran_reSetAddr(int linecode, int lineGOTO) {
+
+}
+//查找符号表是否存在当前引用的变量名
+int tran_lookUp(string name) {
+	bool findFlag = false;
+	int index = -1;
+	for (int i = 0; i < tran_CharcTable.size(); i++)
 	{
-		printTree(1, treeBegin.subTrees[i]);
+		if (name == tran_CharcTable[i].name) {
+			findFlag = true;
+			index = i;
+			break;
+		}
+	}
+	return index;
+}
+
+//第零类、若是简单终结符移进，则生成临时语义单元压入语义栈
+//从分析栈顶获取变量
+void tran_handleZero(string tran_char) {
+	tran_stateUnit tranV;
+	tranV.val = tran_char;
+	if (tran_char == "if") {
+		ifFlag = true;
+	}
+	tranV.left = "";
+	valUnitStack.push_back(tranV);
+
+}
+
+//第一类、使用产生式 >=15、从语义栈顶获取综合属性、弹栈、压栈
+void tran_handleOne(int tran_pType) {
+	//制作新语法变量
+	tran_stateUnit tranV;
+	//获取综合属性
+	tranV.val = valUnitStack.back().val;
+	tranV.left = tSearchRange[tran_pType].t;
+	string string1;
+
+	bool flag = false;
+	//判断栈顶元素是否拥有一个临时变量号
+	//没有临时变量号
+	if (tranV.tempNum == -1) {
+		tranV.tempNum = tran_temp;
+		string1 = tranV.val;
+		flag = false;
+	}
+	//有临时变量号
+	else {
+		string1 = to_string(tranV.tempNum);
+		tranV.tempNum = valUnitStack.back().tempNum;
+		flag = true;
+	}
+	tran_addNewThreeAddr(tran_temp, string1, flag, "","",false,-1);
+	tran_temp++;
+	//弹栈推栈
+	valUnitStack.pop_back();
+	valUnitStack.push_back(tranV);
+}
+//第二类、适用于产生式 Q14、从语义栈顶获取综合属性，判断是否应进行print操作
+void tran_handleTwo() {
+	//弹掉无关信息
+	valUnitStack.pop_back();
+	valUnitStack.pop_back();
+	//create new
+	tran_stateUnit tranV;
+	tranV.val = valUnitStack.back().val;
+	tranV.left = "Q";
+	int temp1 = valUnitStack.back().tempNum;
+
+	valUnitStack.pop_back();
+	valUnitStack.pop_back();
+	valUnitStack.pop_back();
+	//charge if can print
+	if (ifFlag) {
+		valUnitStack.push_back(tranV);
+	}
+	//can t print waiting 
+	else {
+		tran_addNewThreeAddr(-1, to_string(temp1),false, "pr", "",false, -1);
+	}
+}
+//第三类、适用于产生式 L13、从语义栈顶获取综合属性，进行数字 op 操作
+void tran_handleThree() {
+	valUnitStack.pop_back();
+	//create new
+	//Sum two numbers,into new tranV
+	tran_stateUnit tranV;
+	tranV.left = "L";
+	tranV.tempNum = tran_temp;
+
+	int num1 = atoi(valUnitStack.back().val.c_str());
+	valUnitStack.pop_back();
+	string op = valUnitStack.back().val;
+	valUnitStack.pop_back();
+	int num2 = atoi(valUnitStack.back().val.c_str());
+	valUnitStack.pop_back();
+
+	int value;
+	if (op == "|") {
+		value = num2 || num1;
+	}
+	else if (op == "%") {
+		value = num2 % num1;
+	}
+	else if (op == "&&") {
+		value = num2 && num1;
+	}
+	else if (op == "+") {
+		value = num2 + num1;
+	}
+	else if (op == "-") {
+		value = num2 - num1;
+	}
+	else if (op == "*") {
+		value = num2 * num1;
+	}
+	else {
+		value = num2 / num1;
+	}
+	tranV.val = to_string(value);
+	valUnitStack.push_back(tranV);
+
+	tran_addNewThreeAddr(tran_temp, to_string(num2),true, op, to_string(num1),true, -1);
+	tran_temp++;
+}
+
+//第四类、处理两种申明语句N12，需要操作符号表了
+void tran_handleFour(int tran_pType, int tran_pNum) {
+	valUnitStack.pop_back();
+
+	string type;
+	string name;
+	string value = "";
+
+	//声明语句带有赋值
+	//先一步获取变量值
+	if (tran_pNum == 0) {
+		value = valUnitStack.back().val;
+		valUnitStack.pop_back();
+
+		valUnitStack.pop_back();
+	}
+	name = valUnitStack.back().val;
+	valUnitStack.pop_back();
+	type = valUnitStack.back().val;
+	valUnitStack.pop_back();
+
+	//先一步在符号表中查找当前变量
+	int index = tran_lookUp(name);
+	if (index != -1) {
+		cout << linecode << "<<< ERROR redefine >>>" << endl;
+	}
+	//不存在重复声明
+	else {
+		//新增符号表单元，压栈
+		tran_ChracUnit tranC;
+		tranC.name = name;
+		tranC.type = type;
+		tranC.value = value;
+		tran_CharcTable.push_back(tranC);
 	}
 }
 
+//第五种、处理两种布尔语句J11
+void tran_handleFive(int tran_pType, int tran_pNum) {
+	string num1 = valUnitStack.back().val;
+	valUnitStack.pop_back();
+	string op = valUnitStack.back().val;
+	valUnitStack.pop_back();
+	string num2 = valUnitStack.back().val;
+	valUnitStack.pop_back();
+	//在符号表中找出名字对应的值
+	int index = tran_lookUp(num2);
+	//获取名字对应的值
+	string val = tran_CharcTable[index].value;
+
+	bool tempFlag = false;
+	if (index == -1) {
+		cout << num2 << "<<< Is not exist >>>" << endl;
+	}
+
+	else {
+		if (op == "==") {
+			tran_addNewThreeAddr(tran_temp, num2, false, "and", num1, false, -1);
+		}
+		else {
+			tran_addNewThreeAddr(tran_temp, num2, false, "and", num1, false, -1);
+		}
+
+
+		//如果是变量比较数字的情况
+		if (tran_pNum == 0) {
+			if (op == "==") {
+				tempFlag = (atoi(val.c_str()) == atoi(num1.c_str())) ? true : false;
+			}
+			else {
+				tempFlag = (atoi(val.c_str()) != atoi(num1.c_str())) ? true : false;
+			}
+		}
+		//是变量比较字符串的情况
+		else {
+			if (op == "==") {
+				tempFlag = (val == num1) ? true : false;
+			}
+			else {
+				tempFlag = (val != num1) ? true : false;
+			}
+		}
+	}
+
+	tran_stateUnit tranV;
+	tranV.left = "J";
+	tranV.val = tempFlag ? to_string(1) : to_string(0);
+	tranV.tempNum = tran_temp;
+	valUnitStack.push_back(tranV);
+	tran_temp++;
+}
+
+//第六种、处理两种变量串组合语句T9 Y10
+void tran_handleSix(int tran_pType, int tran_pNum) {
+	tran_stateUnit tranV;
+	if (tran_pType == 10) {
+		//连续归约开关已打开，一次性从顶部归约两个单元
+		if (removeRecruSwitch) {
+			string string1 = valUnitStack.back().val;
+			int temp1 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+			string string2 = valUnitStack.back().val;
+			int temp2 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+
+			tran_addNewThreeAddr(tran_temp, to_string(temp1), true,"+", to_string(temp2),true, -1);
+			tranV.left = "Y";
+			tranV.val = string2+ " " + string1;
+			tranV.tempNum = tran_temp;
+			tran_temp++;
+			valUnitStack.push_back(tranV);
+		}
+		else {
+			string string1 = valUnitStack.back().val;
+			int temp1 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+			
+
+			tran_addNewThreeAddr(tran_temp, to_string(temp1),true, "", "",true, -1);
+			tranV.left = "Y";
+			tranV.tempNum = tran_temp;
+			tran_temp++;
+			tranV.val = string1;
+			valUnitStack.push_back(tranV);
+		}
+	}
+	//是进行了T归约
+	else {
+		//可以从栈顶归约两个
+		if (canMakeTwo) {
+			canMakeTwo = false;
+			string string1 = valUnitStack.back().val;
+			int temp1 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+			string string2 = valUnitStack.back().val;
+			int temp2 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+
+			tran_addNewThreeAddr(tran_temp, to_string(temp1),true, "+", to_string(temp2),true, -1);
+			tranV.left = "T";
+			tranV.val = string2 + " " + string1;
+			tranV.tempNum = tran_temp;
+			tran_temp++;
+			valUnitStack.push_back(tranV);
+		}
+		//只能从栈顶归约一个
+		else {
+			string string1 = valUnitStack.back().val;
+			int temp1 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+			tran_addNewThreeAddr(tran_temp, to_string(temp1),true, "","",true, -1);
+			tranV.left = "T";
+			tranV.val = string1;
+			tranV.tempNum = tran_temp;
+			tran_temp++;
+			valUnitStack.push_back(tranV);
+
+		}
+		
+	}
+}
+
+//第七种、处理变量串组合语句 B8
+void tran_handleSeven() {
+	valUnitStack.pop_back();
+
+	tran_stateUnit tranV;
+	string string1 = valUnitStack.back().val;
+	int temp1 = valUnitStack.back().tempNum;
+	valUnitStack.pop_back();
+
+	tran_addNewThreeAddr(tran_temp, "\" + " + to_string(temp1),true, "+", "\"",true, -1);
+	tranV.val = "\"" + string1 + "\"";
+	tranV.left = "B";
+	tranV.tempNum = tran_temp;
+	tran_temp++;
+
+	valUnitStack.pop_back();
+	valUnitStack.push_back(tranV);
+}
+
+//第八种、处理四种赋值语句 H7
+void tran_handleEight() {
+
+}
+
+//第九种、处理S5 X6语句串语句
+void tran_handleNine(int tran_pType, int tran_pNum) {
+	tran_stateUnit tranV;
+	//为X
+	if (tran_pType == 6) {
+		tranV.left = "X";
+		//判断连续归约开关
+		//一次读两个
+		if (removeRecruSwitch) {
+			string string1 = valUnitStack.back().val;
+			int temp1 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+			string string2 = valUnitStack.back().val;
+			int temp2 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+
+			tran_addNewThreeAddr(tran_temp, to_string(temp1),true, "+", to_string(temp2),true, -1);
+			tranV.tempNum = tran_temp;
+			tran_temp++;
+			tranV.val = string2 + "\n" + string1;
+			valUnitStack.push_back(tranV);
+		}
+		//连续归约开关未打开
+		//说明正处于归约第一个的状态
+		//不需要对临时变量进行归约
+		else {
+			string string1 = valUnitStack.back().val;
+			valUnitStack.pop_back();
+			tranV.val = string1;
+			tranV.tempNum = tran_temp;
+			int temp1 = valUnitStack.back().tempNum;
+			tran_addNewThreeAddr(tran_temp, to_string(temp1),true, "", "",true, -1);
+			tran_temp++;
+			valUnitStack.push_back(tranV);
+		}
+	}
+	//为S
+	else {
+		if (canMakeTwo) {
+			canMakeTwo = false;
+			tranV.left = "S";
+			string string1 = valUnitStack.back().val;
+			int temp1 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+			string string2 = valUnitStack.back().val;
+			int temp2 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+
+			tran_addNewThreeAddr(tran_temp, to_string(temp1),true, "+", to_string(temp2),true, -1);
+			tranV.tempNum = tran_temp;
+			tran_temp++;
+			tranV.val = string2 + "\n" + string1;
+			valUnitStack.push_back(tranV);
+		}
+		else {
+			tranV.left = "S";
+			string string1 = valUnitStack.back().val;
+			int temp1 = valUnitStack.back().tempNum;
+			valUnitStack.pop_back();
+			tran_addNewThreeAddr(tran_temp, to_string(temp1), true,"","",true, -1);
+			tranV.tempNum = tran_temp;
+			tran_temp++;
+			tranV.val = string1;
+			valUnitStack.push_back(tranV);
+		}
+		
+	}
+}
+
+//第十种、处理 I2 if语句
+void tran_handleTen() {
+	valUnitStack.pop_back();
+	tran_stateUnit temp = valUnitStack.back();
+	
+	valUnitStack.pop_back();
+	valUnitStack.pop_back();
+	valUnitStack.pop_back();
+	valUnitStack.push_back(temp);
+
+	//获取布尔表达式的值
+	int temp1 = valUnitStack[valUnitStack.size() - 2].tempNum;
+	int temp2 = valUnitStack.back().tempNum;
+	int ifTrue = atoi(valUnitStack[valUnitStack.size() - 2].val.c_str());
+	tran_addNewThreeAddr(-1, to_string(temp1), true, "if", "", true,linecode + 2);
+	
+	tran_addNewThreeAddr(-1, "", true, "el", "",true, linecode + 2);
+	if (ifTrue) {
+		tran_addNewThreeAddr(-1, to_string(temp2), true, "pr", "", true, -1);
+		cout << valUnitStack.back().val;
+	}
+	ifFlag = false;
+	valUnitStack.pop_back();
+	valUnitStack.pop_back();
+	valUnitStack.pop_back();
+	valUnitStack.pop_back();
+}
+
+void tran_charge(int tran_pType, int tran_pNum) {
+	if (valUnitStack.size()==0) {
+		return;
+	}
+	if (tran_pType >= 15) {
+		tran_handleOne(tran_pType);
+	}
+	else if (tran_pType == 14) {
+		tran_handleTwo();
+	}
+	else if (tran_pType == 13) {
+		tran_handleThree();
+	}
+	else if (tran_pType == 12) {
+		tran_handleFour(tran_pType, tran_pNum);
+	}
+	else if (tran_pType == 11) {
+		tran_handleFive(tran_pType, tran_pNum);
+	}
+	else if (tran_pType == 9 || tran_pType == 10) {
+		tran_handleSix(tran_pType, tran_pNum);
+	}
+	else if (tran_pType == 8) {
+		tran_handleSeven();
+	}
+	else if (tran_pType == 6 || tran_pType == 5) {
+		tran_handleNine(tran_pType, tran_pNum);
+	}
+	else/*tran_pType == 4*/ {
+		tran_handleTen();
+	}
+}
+
+void tran_printThreeAddr() {
+	for (int i = 0; i < tran_threeAddr.size(); i++)
+	{
+		threeAddr tranC = tran_threeAddr[i];
+		
+		cout << tranC.linecode << "|\t";
+		if (tranC.op == "pr") {
+			cout << "print " << tranC.addr1 << endl;
+		}
+		else if (tranC.op == "if") {
+			cout << "if " << tranC.addr1 << " true GOTO " << tranC.lineGOTO << endl;
+		}
+		else if (tranC.op == "el") {
+			cout << "GOTO " << tranC.lineGOTO << endl;
+		}
+		else{
+			if (tranC.left != -1) {
+				cout << tranC.left << " = ";
+			}
+			
+			cout <<tranC.addr1;
+			
+			if (tranC.op != "") {
+				cout << " " + tranC.op + " ";
+			}
+
+			if (tranC.addr2 != "") {
+				cout << tranC.addr2;
+			}
+			
+
+			cout << endl;
+		}
+	}
+}
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>语义分析器
+
+
+
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>语义分析模块
 int main()
 {
 	cout << "<<< DA语言词法分析器开始运行: >>>" << endl << endl;
@@ -1175,8 +1778,17 @@ int main()
 	SLRactionTable();
 	//	showSLRActionTable();
 	beginSynTax();
-	cout << endl << "<<< 语法树如下: >>>" << endl << endl;
 	showSynTaxTree();
-	cout << endl <<"<<< DA语言语法分析器运行完毕: >>>" << endl;
+	cout << endl <<"<<< DA语言语法分析器|语义分析器 运行完毕: >>>" << endl;
 
+	//打印3地址码
+	tran_printThreeAddr();
+	for (int i = 0; i < tran_CharcTable.size(); i++)
+	{
+		tran_ChracUnit tran_C = tran_CharcTable[i];
+		cout << tran_C.name << " |";
+		cout << tran_C.type << " |";
+		cout << tran_C.value << " |";
+		cout << endl;
+	}
 }

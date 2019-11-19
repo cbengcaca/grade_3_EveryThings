@@ -19,14 +19,11 @@ H	->	K	D	15
 H	->	K	9	40	5	6	15	
 B	->	7	T	7				
 T	->	C	Y				
-Y	->	C	Y	
-J	->	C	F	A				
+Y	->	C	Y				
 J	->	C	G	A				
 J	->	C	G	B				
 N	->	O	C	9	A	15		
-N	->	O	C	15				
-L	->	C	M	C	15			
-L	->	C	M	A	15			
+N	->	O	C	15							
 L	->	A	M	A	15			
 Q	->	39	5	B	6	15		
 K	->	C	
