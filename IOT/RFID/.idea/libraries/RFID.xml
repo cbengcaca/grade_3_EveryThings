@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="RFID">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Reader.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-connector-java-5.1.48.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-connector-java-8.0.18.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dom4j-2.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

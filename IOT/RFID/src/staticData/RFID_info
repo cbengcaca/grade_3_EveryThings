@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-    <comName>COM1</comName><!--在此行写下串口名称-->
+    <comName>COM3</comName><!--在此行写下串口名称-->
     <port>55533</port>
 
 </root>

@@ -1,81 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab905618-3b7f-439e-a428-7fa40e6e4bb3" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="32c0ea69-227d-4489-b077-8e6783b6fd0e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Tag Library Descriptor" />
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
   </component>
-  <component name="ProjectId" id="1Thdfld7alPdrDxlgwhyzQ9NLmw" />
+  <component name="ProjectId" id="1UEk1I16JbmUGMfO2NX2rNzIwMb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql-connector-java-5.1.48.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\15054\IDEA-workspace\RFID\src" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.RFID_dbOp">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager">
+    <configuration name="RFID_atomicOp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.company.RFID_atomicOp" />
       <module name="RFID" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=D:\lib" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RFID_actionFuns" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.RFID_actionFuns" />
-      <module name="RFID" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RFID_dbOp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.RFID_dbOp" />
-      <module name="RFID" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=C:\Users\baobao\Documents\Workspace\IDEA_workspace\RFID\lib" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.company.*" />
@@ -88,75 +47,105 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RFID_dbOp" />
-        <item itemvalue="Application.RFID_actionFuns" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.RFID_atomicOp" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ab905618-3b7f-439e-a428-7fa40e6e4bb3" name="Default Changelist" comment="" />
-      <created>1573916366667</created>
+      <changelist id="32c0ea69-227d-4489-b077-8e6783b6fd0e" name="Default Changelist" comment="" />
+      <created>1574928925720</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1573916366667</updated>
-      <workItem from="1573916370296" duration="13615000" />
-      <workItem from="1574059605564" duration="2939000" />
-      <workItem from="1574062796098" duration="9457000" />
-      <workItem from="1574087298825" duration="1833000" />
-      <workItem from="1574122435683" duration="16000" />
-      <workItem from="1574129152040" duration="2077000" />
-      <workItem from="1574138148462" duration="2187000" />
-      <workItem from="1574147285091" duration="9446000" />
-      <workItem from="1574218210294" duration="5009000" />
-      <workItem from="1574247818066" duration="3996000" />
-      <workItem from="1574321745711" duration="1799000" />
-      <workItem from="1574556447546" duration="112000" />
+      <updated>1574928925720</updated>
+      <workItem from="1574928929031" duration="889000" />
+      <workItem from="1575373743547" duration="2953000" />
+      <workItem from="1575521034220" duration="546000" />
+      <workItem from="1575521828547" duration="2997000" />
+      <workItem from="1575530270330" duration="877000" />
+      <workItem from="1575532926057" duration="1981000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/RFID_atomicOp.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/RFID_atomicOp.java</url>
-          <line>123</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/RFID_atomicOp.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/RFID_dbOp.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/company/RFID_actionFuns.java</url>
-          <line>35</line>
-          <properties class="com.company.RFID_actionFuns" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RFID$Main.ic" NAME="Main Coverage Results" MODIFIED="1574088305044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  <component name="WindowStateProjectService">
+    <state x="174" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575530502225">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="174" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575530502225" />
+    <state x="500" y="138" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1575530414042">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="500" y="138" key="#com.intellij.ide.macro.MacrosDialog/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575530414042" />
+    <state x="523" y="195" key="FileChooserDialogImpl" timestamp="1575530288691">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="523" y="195" key="FileChooserDialogImpl/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575530288691" />
+    <state width="1384" height="213" key="GridCell.Tab.0.bottom" timestamp="1575534908223">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1384" height="265" key="GridCell.Tab.0.bottom/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575531149120" />
+    <state width="1384" height="213" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1575534908223" />
+    <state width="1384" height="213" key="GridCell.Tab.0.center" timestamp="1575534908222">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1384" height="265" key="GridCell.Tab.0.center/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575531149120" />
+    <state width="1384" height="213" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1575534908222" />
+    <state width="1384" height="213" key="GridCell.Tab.0.left" timestamp="1575534908222">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1384" height="265" key="GridCell.Tab.0.left/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575531149120" />
+    <state width="1384" height="213" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1575534908222" />
+    <state width="1384" height="213" key="GridCell.Tab.0.right" timestamp="1575534908222">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1384" height="265" key="GridCell.Tab.0.right/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575531149120" />
+    <state width="1384" height="213" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1575534908222" />
+    <state width="1384" height="265" key="GridCell.Tab.1.bottom" timestamp="1575531149121">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1384" height="265" key="GridCell.Tab.1.bottom/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575531149121" />
+    <state width="1384" height="265" key="GridCell.Tab.1.center" timestamp="1575531149120">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1384" height="265" key="GridCell.Tab.1.center/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575531149120" />
+    <state width="1384" height="265" key="GridCell.Tab.1.left" timestamp="1575531149120">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1384" height="265" key="GridCell.Tab.1.left/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575531149120" />
+    <state width="1384" height="265" key="GridCell.Tab.1.right" timestamp="1575531149120">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1384" height="265" key="GridCell.Tab.1.right/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575531149120" />
+    <state x="223" y="15" key="SettingsEditor" timestamp="1575530357924">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="223" y="15" key="SettingsEditor/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575530357924" />
+    <state x="412" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1575532925791">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="412" y="257" key="com.intellij.ide.util.TipDialog/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575530270123" />
+    <state x="412" y="257" key="com.intellij.ide.util.TipDialog/0.0.1440.860@0.0.1440.860" timestamp="1575532925791" />
+    <state x="383" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1575528950966">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="383" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/1440.0.1536.824@0.0.1440.860" timestamp="1575528950966" />
   </component>
 </project>
