@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9e56cbdc-5bf7-4d4e-bcaa-c61247603915" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UnWXS61t0xDfkLvR9DsLj9dop6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/dom4j-2.0.2.jar!/" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Application.RFID_GUI">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="hitwh.Main" />
+      <module name="RFID_REFIX" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RFID_GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RFID_GUI.RFID_GUI" />
+      <module name="RFID_REFIX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="RFID_GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RFID_GUI" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e56cbdc-5bf7-4d4e-bcaa-c61247603915" name="Default Changelist" comment="" />
+      <created>1575992878739</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575992878739</updated>
+      <workItem from="1575992881236" duration="210000" />
+      <workItem from="1576031334907" duration="83000" />
+      <workItem from="1576031429514" duration="10256000" />
+      <workItem from="1576057501730" duration="9912000" />
+      <workItem from="1576115866273" duration="690000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="526" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1576038714111">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="526" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576038714111" />
+    <state x="345" y="111" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1576035501504">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="345" y="111" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576035501504" />
+    <state x="552" y="134" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1576035907274">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="552" y="134" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576035907274" />
+    <state x="452" y="189" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1576035907783">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="452" y="189" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576035907783" />
+    <state x="502" y="189" key="FileChooserDialogImpl" timestamp="1576035947202">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="502" y="189" key="FileChooserDialogImpl/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576035947202" />
+    <state x="502" y="189" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1576031414619" />
+    <state width="1441" height="285" key="GridCell.Tab.0.bottom" timestamp="1576071786389">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1441" height="285" key="GridCell.Tab.0.bottom/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576071786389" />
+    <state width="1441" height="285" key="GridCell.Tab.0.center" timestamp="1576071786389">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1441" height="285" key="GridCell.Tab.0.center/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576071786389" />
+    <state width="1441" height="285" key="GridCell.Tab.0.left" timestamp="1576071786389">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1441" height="285" key="GridCell.Tab.0.left/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576071786389" />
+    <state width="1441" height="285" key="GridCell.Tab.0.right" timestamp="1576071786389">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1441" height="285" key="GridCell.Tab.0.right/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576071786389" />
+    <state width="1441" height="285" key="GridCell.Tab.1.bottom" timestamp="1576071786389">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1441" height="285" key="GridCell.Tab.1.bottom/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576071786389" />
+    <state width="1441" height="285" key="GridCell.Tab.1.center" timestamp="1576071786389">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1441" height="285" key="GridCell.Tab.1.center/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576071786389" />
+    <state width="1441" height="285" key="GridCell.Tab.1.left" timestamp="1576071786389">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1441" height="285" key="GridCell.Tab.1.left/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576071786389" />
+    <state width="1441" height="285" key="GridCell.Tab.1.right" timestamp="1576071786389">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1441" height="285" key="GridCell.Tab.1.right/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576071786389" />
+    <state x="201" y="8" key="SettingsEditor" timestamp="1576035953432">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="201" y="8" key="SettingsEditor/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576035953432" />
+    <state x="201" y="8" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1575992967073" />
+    <state x="416" y="258" key="com.intellij.ide.util.TipDialog" timestamp="1576115866637">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="416" y="258" key="com.intellij.ide.util.TipDialog/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576057501491" />
+    <state x="416" y="258" key="com.intellij.ide.util.TipDialog/0.0.1440.860@0.0.1440.860" timestamp="1576115866637" />
+    <state x="383" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1576039416884">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="383" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1440.860/493.-1080.1536.824@0.0.1440.860" timestamp="1576039416884" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/hitwh/Main.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
