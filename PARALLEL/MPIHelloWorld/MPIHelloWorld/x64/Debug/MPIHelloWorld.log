@@ -1,0 +1,14 @@
+﻿  mpi_hello.c
+C:\Users\baobao\Documents\Workspace\VS_workspace\MPIHelloWorld\MPIHelloWorld\mpi_hello.c(45,61): warning C4047: “函数”:“const size_t”与“char [33]”的间接级别不同
+C:\Users\baobao\Documents\Workspace\VS_workspace\MPIHelloWorld\MPIHelloWorld\mpi_hello.c(45,61): warning C4024: “sprintf_s”: 形参和实参 2 的类型不同
+C:\Users\baobao\Documents\Workspace\VS_workspace\MPIHelloWorld\MPIHelloWorld\mpi_hello.c(46,20): warning C4047: “函数”:“const char *const ”与“int”的间接级别不同
+C:\Users\baobao\Documents\Workspace\VS_workspace\MPIHelloWorld\MPIHelloWorld\mpi_hello.c(46,20): warning C4024: “sprintf_s”: 形参和实参 3 的类型不同
+C:\Users\baobao\Documents\Workspace\VS_workspace\MPIHelloWorld\MPIHelloWorld\mpi_hello.c(48,44): warning C4267: “函数”: 从“size_t”转换到“int”，可能丢失数据
+mpi_hello.obj : error LNK2019: 无法解析的外部符号 MPI_Send，该符号在函数 main 中被引用
+mpi_hello.obj : error LNK2019: 无法解析的外部符号 MPI_Recv，该符号在函数 main 中被引用
+mpi_hello.obj : error LNK2019: 无法解析的外部符号 MPI_Comm_size，该符号在函数 main 中被引用
+mpi_hello.obj : error LNK2019: 无法解析的外部符号 MPI_Comm_rank，该符号在函数 main 中被引用
+mpi_hello.obj : error LNK2019: 无法解析的外部符号 MPI_Init，该符号在函数 main 中被引用
+mpi_hello.obj : error LNK2019: 无法解析的外部符号 MPI_Finalize，该符号在函数 main 中被引用
+C:\Program Personal\Microsoft SDKs\MPI\Lib\x86\\msmpi.lib : warning LNK4272: 库计算机类型“x86”与目标计算机类型“x64”冲突
+C:\Users\baobao\Documents\Workspace\VS_workspace\MPIHelloWorld\MPIHelloWorld\x64\Debug\MPIHelloWorld.exe : fatal error LNK1120: 6 个无法解析的外部命令

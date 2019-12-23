@@ -1,0 +1,5 @@
+﻿  pth_pi.c
+C:\Users\baobao\Documents\Workspace\VS_workspace\Pthread1\pth_pi.c(54,59): warning C4244: “函数”: 从“__int64”转换到“size_t”，可能丢失数据
+C:\Users\baobao\Documents\Workspace\VS_workspace\Pthread1\pth_pi.c(96,13): warning C4244: “return”: 从“double”转换到“int”，可能丢失数据
+C:\Users\baobao\Documents\Workspace\VS_workspace\Pthread1\pth_pi.c(110,1): warning C4047: “初始化”:“int”与“void *”的间接级别不同
+  Pthread1.vcxproj -> C:\Users\baobao\Documents\Workspace\VS_workspace\Pthread1\Debug\Pthread1.exe

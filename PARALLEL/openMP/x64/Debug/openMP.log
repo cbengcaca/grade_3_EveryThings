@@ -1,0 +1,7 @@
+﻿  CountSort.cpp
+C:\Users\baobao\Documents\Workspace\VS_workspace\openMP\CountSort.cpp(5,9): warning C4101: “j”: 未引用的局部变量
+C:\Users\baobao\Documents\Workspace\VS_workspace\openMP\CountSort.cpp(5,6): warning C4101: “i”: 未引用的局部变量
+C:\Users\baobao\Documents\Workspace\VS_workspace\openMP\CountSort.cpp(4): warning C4101: “i”: 未引用的局部变量
+C:\Users\baobao\Documents\Workspace\VS_workspace\openMP\CountSort.cpp(4): warning C4101: “j”: 未引用的局部变量
+C:\Users\baobao\Documents\Workspace\VS_workspace\openMP\CountSort.cpp(45,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  openMP.vcxproj -> C:\Users\baobao\Documents\Workspace\VS_workspace\openMP\x64\Debug\openMP.exe
